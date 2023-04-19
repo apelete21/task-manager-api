@@ -1,14 +1,23 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
-const port = 5500
+// api listenning port
+const port = 5500;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+// routers imports
+const tasks = require("./routes/tasks.routes");
+
+// routes
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
+app.use("/api/v1/tasks", tasks);
+
+// middlewares
+app.use(express.json())
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}!`);
+  console.log(`API listening on port ${port}!`);
 });
 
 //Run app, then load http://localhost:port in a browser to see the output.
