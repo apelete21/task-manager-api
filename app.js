@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+// middlewares
+app.use(express.json())
+
 // mongodb connections
 require("./db/connect")
 
@@ -15,9 +18,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 app.use("/api/v1/tasks", tasks);
-
-// middlewares
-app.use(express.json())
 
 app.listen(port, () => {
   console.log(`API listening on port ${port}!`);
