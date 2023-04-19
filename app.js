@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+// mongodb connections
+require("./db/connect")
+
 // api listenning port
 const port = 5500;
 
